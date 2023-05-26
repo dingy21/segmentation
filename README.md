@@ -70,6 +70,7 @@ skim(mkt1)
 ```
 fviz_nbclust(mkt1, kmeans, method = "wss")
 ```
+![Picture1](https://github.com/dingy21/segmentation/assets/134649288/3c795cea-f6d7-40db-af20-86ea9901fa4a)
 ## Generate and Visualize Clusters
 ```
 set.seed(904)
@@ -79,6 +80,7 @@ print(cluster)
 
 fviz_cluster(cluster, mkt1, ellipse.type = "norm", geom = "point")
 ```
+![Picture2](https://github.com/dingy21/segmentation/assets/134649288/7762f379-ca13-435c-8b89-af4d427e60c9)
 ## Visualize Cluster Segmentation
 ```
 ggplot(mkt1,aes(cluster$cluster))+geom_bar()
@@ -114,6 +116,7 @@ ggplot(mkt1,aes(x=cluster$cluster))+geom_bar()+facet_wrap(~mkt$response) + labs(
 
 ggplot(mkt,aes(response))+geom_bar()+facet_wrap(~cluster$cluster)+geom_text(stat='count', aes(label=..count..), vjust = 1.2, colour = "white")+labs(title = "Response by Clusters")
 ```
+![Picture3](https://github.com/dingy21/segmentation/assets/134649288/eead2787-0f77-418f-aee1-e381f332539e)
 ## Data Preparation for Regression
 ```
 mktfin <- mkt %>%
@@ -221,6 +224,7 @@ scored_test_glm %>%
   autoplot(type = "heatmap") +
   labs(title="Test Confusion Matrix")
 ```
+![Picture4](https://github.com/dingy21/segmentation/assets/134649288/57f7224c-8200-4a20-bb73-02886f7b462c)
 ## Reduce Model Using Stepwise
 ```
 steplog <- glm(response ~ ., data = bake_train, family = binomial(link = "logit"))
@@ -296,3 +300,4 @@ scored_test_final %>%
   autoplot(type = "heatmap") +
   labs(title = "Test Confusion Matrix")
 ```
+![Picture5](https://github.com/dingy21/segmentation/assets/134649288/efb94daf-f2b3-456d-b1ff-ef04a14ed73f)
